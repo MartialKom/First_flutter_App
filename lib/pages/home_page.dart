@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
               Navigator.push(
                 context, 
                 PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => const EventPage()
+                    pageBuilder: (_, __, ___) => const ProductPage()
                 )
                 );
             }, 

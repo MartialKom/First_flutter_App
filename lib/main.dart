@@ -1,5 +1,7 @@
 
+import 'package:first_flutter_app/pages/addproduct_page.dart';
 import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'pages/home_page.dart';
 
 void main() {
@@ -29,17 +31,22 @@ setCurrentIndex(int index){
     return  MaterialApp(
       home: Scaffold(
         appBar:  AppBar(
-          title: const Text("Service d'Inventaire"),
+          title: const [
+            Text("Service d'Inventaire"),
+            Text("Ajout d'un prduit")
+          ][current_index],
         ),  
-        body: const HomePage(),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: current_index,
-          onTap: (index)=>setCurrentIndex(index),
-          selectedItemColor: Color.fromARGB(255, 38, 97, 56),
-          iconSize: 23,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label:'Acceuil'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), label:'Paramètres')
+        body: const [
+          HomePage(),
+          AddPage()
+        ][current_index],
+        bottomNavigationBar: SalomonBottomBar(
+          currentIndex: current_index, //l'index de la page courante
+          onTap: (index)=>setCurrentIndex(index), //On modifie cet index au click
+          
+          items:  [
+            SalomonBottomBarItem(icon: const Icon(Icons.home), title: const Text("Acceuil"), selectedColor: const Color.fromARGB(255, 38, 97, 56)),
+            SalomonBottomBarItem(icon: const Icon(Icons.add), title: const Text("Ajouter"), selectedColor:const Color.fromARGB(255, 131, 117, 39) )
           ]
           ),
         ),

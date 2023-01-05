@@ -2,14 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class EventPage extends StatefulWidget {
-  const EventPage({super.key});
+class ProductPage extends StatefulWidget {
+  const ProductPage({super.key});
 
   @override
-  State<EventPage> createState() => _EventPageState();
+  State<ProductPage> createState() => _ProductPageState();
 }
 
-class _EventPageState extends State<EventPage> {
+class _ProductPageState extends State<ProductPage> {
 
 
 var productsList = [
@@ -42,7 +42,7 @@ var productsList = [
         child: ListView.builder(
           itemCount: productsList.length,
           itemBuilder: (context, index){
-            
+
             final product = productsList[index];
             final img = product['img'];
             final qte = product['qte'];
