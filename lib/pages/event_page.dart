@@ -5,33 +5,32 @@ import 'package:flutter/material.dart';
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key});
 
+ static var productsList = [
+  {
+    "nom": "Clavier Gamers",
+    "price": "4500",
+    "qte": "15",
+    "img":"clavier"
+  },
+  {
+    "nom": "Souris USB",
+    "price": "1500",
+    "qte": "20",
+    "img":"souris"
+  },
+  {
+    "nom": "Laptop",
+    "price": "180000",
+    "qte": "15",
+    "img":"laptop"
+  }
+ ];
   @override
   State<ProductPage> createState() => _ProductPageState();
 }
 
 class _ProductPageState extends State<ProductPage> {
 
-
-var productsList = [
-  {
-    "nom": "Clavier Gamers",
-    "price": 4500,
-    "qte": 15,
-    "img":"clavier"
-  },
-  {
-    "nom": "Souris USB",
-    "price": 1500,
-    "qte": 20,
-    "img":"souris"
-  },
-  {
-    "nom": "Laptop",
-    "price": 180000,
-    "qte": 15,
-    "img":"laptop"
-  }
- ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,17 +39,18 @@ var productsList = [
       ),
       body:  Center(
         child: ListView.builder(
-          itemCount: productsList.length,
+          itemCount: ProductPage.productsList.length,
           itemBuilder: (context, index){
 
-            final product = productsList[index];
+            final product = ProductPage.productsList[index];
             final img = product['img'];
             final qte = product['qte'];
             final prix = product['price'];
             final nom = product['nom'];
 
             return Card(
-              child: ListTile(
+              child: Scrollbar(
+               child: ListTile(
                 leading: Image.asset("assets/images/$img.png"),
                 title: Text("$nom -- $prix FCFA"),
                 subtitle: Text("Qte: $qte") ,
@@ -63,6 +63,7 @@ var productsList = [
                   onPressed: () => print("OnClick"),
                 ),
               ),
+            ),
             );
           },
         ),
